@@ -3,7 +3,7 @@ import useGithub from '../../CustomHooks/useGithub';
 import DeveloperCard from './DeveloperCard';
 
 const Team = () => {
-    const { githubProfile } = useGithub("PankajKumar1947");
+    const { githubProfile } = useGithub("suman09");
 
     return (
         <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-12 px-4">
@@ -17,7 +17,7 @@ const Team = () => {
                 <div className="flex justify-center">
                     <DeveloperCard
                         profile={githubProfile}
-                        linkedinUrl="https://www.linkedin.com/in/pankaj-kumar-5bbb44268/"
+                        linkedinUrl="https://www.linkedin.com/in/suman09/"
                     />
                 </div>
             </div>
