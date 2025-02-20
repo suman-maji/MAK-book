@@ -3,7 +3,7 @@ import useGithub from '../../CustomHooks/useGithub';
 import DeveloperCard from './DeveloperCard';
 
 const Team = () => {
-    const { githubProfile } = useGithub("suman09");
+    const { githubProfile } = useGithub("suman-maji");
 
     return (
         <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-12 px-4">
