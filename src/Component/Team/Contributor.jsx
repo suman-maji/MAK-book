@@ -1,4 +1,4 @@
-{/*import React from 'react'
+import React from 'react'
 import contr from '../../Assets/contr.jpg'
 
 const Contributor = () => {
@@ -44,4 +44,4 @@ const Contributor = () => {
   )
 }
 
-export default Contributor*/}
+export default Contributor
