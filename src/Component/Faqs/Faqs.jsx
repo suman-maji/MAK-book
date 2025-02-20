@@ -4,20 +4,20 @@ import Fag from './Faq';
 const Faqs = () => {
     const faqs = [
         {
-            Ques: `What subjects does this website cover?`,
-            Ans: `Our website provides study resources for a comprehensive range of subjects relevant to your MAKAUT University stream. Be sure to explore the "Subjects" section to find the specific topics you need.`
+            Ques: `What subjects are covered on this platform?`,
+            Ans: `Our platform offers a comprehensive collection of study resources tailored for MAKAUT University students. Navigate to the "Subjects" section to explore materials relevant to your course.`
         },
         {
-            Ques: `Are the previous year question papers downloadable or can I only view them online?`,
-            Ans: `We offer flexibility in accessing past exam papers. You can download them for offline study using Google Drive or conveniently view them directly on our website.`
+            Ques: `Can I download previous year question papers, or are they only available for online viewing?`,
+            Ans: `You have complete flexibility! Our past exam papers can be either viewed online or downloaded via Google Drive for offline access.`
         },
         {
-            Ques: `Do you offer any answer keys or explanations for the previous year questions?`,
-            Ans: `We understand the importance of answer keys and explanations for effective exam preparation. While we are currently developing this feature and it will be available soon, you'll find solutions for many questions already included within the downloadable subject organizers.`
+            Ques: `Are answer keys or explanations available for past exam questions?`,
+            Ans: `We recognize the importance of detailed explanations for effective learning. While we're actively working on providing comprehensive solutions, many questions already have solutions included within the subject organizers.`
         },
         {
-            Ques: `Is this website free to use?`,
-            Ans: `Access to our website's resources is completely free. We aim to provide valuable study materials to help you excel in your academics.`
+            Ques: `Is access to this website completely free?`,
+            Ans: `Yes! All resources on our platform are freely accessible, ensuring that students can prepare effectively without any financial burden.`
         },
     ];
     
@@ -36,3 +36,4 @@ const Faqs = () => {
 }
 
 export default Faqs;
+
