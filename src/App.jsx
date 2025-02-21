@@ -16,7 +16,7 @@ function App() {
       <div className="bg-gray-800 font-mont">
         <BrowserRouter>
           <Helmet>
-            <title>Snapstudy - Get the Latest MAKAUT Study Material</title>
+            <title>MAK-Book - Get the Latest MAKAUT Study Material</title>
             <meta name="description" content="Snapstudy - Your ultimate resource for the latest MAKAUT study materials, organized notices, and previous year question papers. Simplify your MAKAUT studies with Snapstudy." />
             <meta name="keywords" content="Snapstudy, MAKAUT, study material, organizer, notice, previous year question papers, resources, exam preparation, students, guides, syllabus" />
           </Helmet>
