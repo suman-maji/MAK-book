@@ -37,7 +37,7 @@ const Footer = () => {
 
       <hr className='border-gray-600' />
       <p className='text-center my-4 text-xs sm:text-sm'>© 2024 MAK-Book. Created by 
-        <a className='text-red-500 hover:underline ml-1' href='https://github.com/PankajKumar1947'>Suman Maji</a>.
+        <a className='text-red-500 hover:underline ml-1' href='https://github.com/suman-maji'>Suman Maji</a>.
       </p>
       <hr className='border-gray-600' />
     </div>
