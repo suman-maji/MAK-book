@@ -1,7 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, MapPin, Building } from 'lucide-react';
 
-const DeveloperCard = ({ profile, linkedinUrl }) => {
+const DeveloperCard = ({ profile, linkedinUrl, linkedinImage }) => {
   if (!profile) return null;
 
   return (
@@ -10,7 +10,7 @@ const DeveloperCard = ({ profile, linkedinUrl }) => {
         <div className="relative group">
           <div className="w-48 h-48 rounded-full overflow-hidden ring-4 ring-purple-500/20 transform transition-all duration-300 group-hover:scale-105">
             <img 
-              src={profile.avatar_url} 
+              src={linkedinImage || profile.avatar_url} 
               alt={profile.name} 
               className="w-full h-full object-cover"
             />
