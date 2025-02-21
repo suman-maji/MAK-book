@@ -1,53 +1,54 @@
-import React from 'react'
-import { GoArrowDownRight } from "react-icons/go";
-import logo from '../../Assets/logo.png'
+import React from 'react';
+import { GoArrowDownRight } from 'react-icons/go';
+import logo from '../../Assets/logo.png';
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className='px-[5%] bg-gradient-to-b from-black to-gray-800  text-white'>
-      <div className='pt-10 flex justify-between'>
-        <h1 className='text-xl sm:text-3xl font-semibold '>Snap-Study</h1>
-        <NavLink to={"/"}>
-          <img src={logo} alt="snap-study" className=' rounded-md h-[40px] sm:h-[50px] cursor-pointer' />
+    <div className='px-[5%] py-10 bg-gradient-to-b from-gray-900 to-black text-white'>
+      <div className='flex flex-col md:flex-row justify-between items-center mb-6'>
+        <h1 className='text-2xl sm:text-4xl font-bold tracking-wide'>Snap-Study</h1>
+        <NavLink to={'/'}>
+          <img src={logo} alt='snap-study' className='h-[50px] sm:h-[60px] cursor-pointer transition-transform transform hover:scale-110' />
         </NavLink>
       </div>
 
-      <div className='flex justify-between mt-5 text-sm sm:text-base'>
+      <div className='grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm sm:text-base mb-8'>
         <div>
-          <NavLink to={"/"}>Home</NavLink>
-          <br />
-          <NavLink to={"/about"}>About</NavLink>
+          <h3 className='font-semibold mb-2'>Quick Links</h3>
+          <NavLink to={'/'} className='block hover:text-gray-400 transition'>Home</NavLink>
+          <NavLink to={'/about'} className='block hover:text-gray-400 transition'>About</NavLink>
         </div>
-        <div className='flex flex-col gap-2 '>
-          <a href="fb">Facebook</a>
-          <a href="fb">LinkedIn</a>
-          <a href="fb">Twitter</a>
+        <div>
+          <h3 className='font-semibold mb-2'>Follow Us</h3>
+          <a href='#' className='block hover:text-gray-400 transition'>Facebook</a>
+          <a href='#' className='block hover:text-gray-400 transition'>LinkedIn</a>
+          <a href='#' className='block hover:text-gray-400 transition'>Twitter</a>
         </div>
-
-        <div className='flex flex-col '>
-          <p>Addresss</p>
-          <p>Address Code</p>
+        <div>
+          <h3 className='font-semibold mb-2'>Contact</h3>
+          <p>123 Street, City</p>
+          <p>+123 456 7890</p>
         </div>
-        <div></div>
-        <div></div>
-
+        <div>
+          <h3 className='font-semibold mb-2'>Resources</h3>
+          <a href='#' className='block hover:text-gray-400 transition'>Help Center</a>
+          <a href='#' className='block hover:text-gray-400 transition'>Privacy Policy</a>
+        </div>
       </div>
 
-      <br />
-      <br /><br />
-      <div className='text-2xl md:text-6xl flex gap-2 items-center' >
-        <a href='https://snapstudy-makaut.vercel.app/' className='hover:text-gray-400'>snapstudy-makaut</a>
-        <div className='text-4xl md:text-8xl'>
-          <GoArrowDownRight/>
-        </div>    
+      <div className='flex justify-center items-center text-3xl md:text-5xl font-semibold mb-6'>
+        <a href='https://snapstudy-makaut.vercel.app/' className='hover:text-gray-400 transition'>MAK-Book</a>
+        <GoArrowDownRight className='ml-3 text-4xl md:text-6xl' />
       </div>
 
-      <hr />
-      <p className='my-3 text-xs sm:text-lg'>​© 2024 by Snap-Study. Created by <a className='text-red-600' href="https://github.com/PankajKumar1947">Pankaj Kumar</a> .</p>
-      <hr />
+      <hr className='border-gray-600' />
+      <p className='text-center my-4 text-xs sm:text-sm'>© 2024 MAK-BOOK. Created by 
+        <a className='text-red-500 hover:underline ml-1' href='https://github.com/PankajKumar1947'>Suman Maji</a>.
+      </p>
+      <hr className='border-gray-600' />
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
