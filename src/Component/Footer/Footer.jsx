@@ -31,7 +31,7 @@ const Footer = () => {
       </div>
 
       <div className='flex justify-center items-center text-3xl md:text-5xl font-semibold mb-6'>
-        <a href='https://snapstudy-makaut.vercel.app/' className='hover:text-gray-400 transition'>MAK-Book</a>
+        <a href='https://mak-book.vercel.app/' className='hover:text-gray-400 transition'>MAK-Book</a>
         <GoArrowDownRight className='ml-3 text-4xl md:text-6xl' />
       </div>
 
