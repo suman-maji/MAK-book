@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { CheckCircle, Mail } from "lucide-react";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -7,44 +9,57 @@ const Newsletter = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!email)
-      alert("Please enter the email");
-    if (!click)
-      setShowClick(true);
-    else {
-      console.log("Newsletter email => ", email);
-      setEmail("");
-    }
-  }
+    if (!email) return;
+    if (!click) return setShowClick(true);
+    console.log("Newsletter email => ", email);
+    setEmail("");
+    setShowClick(false);
+  };
+
   return (
-    <div className='text-white bg-gradient-to-b from-gray-800 to-black p-2 md:p-6 sm:py-6'>
-      <div className='sm:max-w-[70%] mx-2 text-sm sm:text-base sm:mx-auto rounded-2xl my-14 bg-gray-900 text-white p-5'>
-        <h1 className='text-2xl sm:text-4xl'>Subscribe to our newsletter</h1>
-        <div className='mt-4 flex flex-col w-[100%] gap-2'>
-          <label htmlFor='email' className='ml-2 text-xl'>Email</label>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-900 to-black p-4">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md bg-gray-800 shadow-lg rounded-2xl p-6 text-white"
+      >
+        <h1 className="text-3xl font-semibold text-center">Subscribe Now</h1>
+        <p className="text-gray-400 text-center mt-2">Stay updated with our latest news</p>
+
+        <div className="mt-5 relative">
+          <Mail className="absolute left-3 top-3 text-gray-500" />
           <input
-            onChange={(e) => { setEmail(e.target.value) }}
+            onChange={(e) => setEmail(e.target.value)}
             value={email}
-            name='email' id='email' type='email' placeholder='Email' className='text-black outline-none px-3 py-3 rounded-xl  ' />
+            type="email"
+            placeholder="Enter your email"
+            className="w-full bg-gray-700 text-white px-10 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          {!email && <p className="text-red-400 text-sm mt-1">Please enter the email</p>}
         </div>
-        {!email ? <h1 className='text-red-400 mt-1'>Please enter the email</h1> : ""}
-        <div className='mt-4 flex ml-2 w-[100%] gap-2'>
+
+        <div className="mt-4 flex items-center gap-2">
           <input
             onClick={() => setClick((prev) => !prev)}
-            type="checkbox" />
-          <label htmlFor="">Yes, Subscribe me to your newsletter</label>
+            type="checkbox"
+            className="w-5 h-5 text-blue-500 focus:ring-0"
+          />
+          <label className="text-gray-300">Yes, Subscribe me to your newsletter</label>
         </div>
-        <div className='px-2 text-red-400'>
-          {showClick ? <h1>Please tick the checkbox</h1> : ""}
-        </div>
-        <div className=' mt-4 mx-4'>
-          <button
-            onClick={submitHandler}
-            className='bg-blue-500 hover:bg-blue-600 duration-200 text-white w-full py-2 rounded-full'>Submit</button>
-        </div>
-      </div>
-    </div>
-  )
-}
 
-export default Newsletter
+        {showClick && <p className="text-red-400 text-sm mt-1">Please tick the checkbox</p>}
+
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={submitHandler}
+          className="mt-5 w-full bg-blue-500 hover:bg-blue-600 transition-all py-3 rounded-full flex justify-center items-center gap-2 text-white font-medium"
+        >
+          <CheckCircle size={20} /> Subscribe
+        </motion.button>
+      </motion.div>
+    </div>
+  );
+};
+
+export default Newsletter;
