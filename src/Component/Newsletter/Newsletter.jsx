@@ -1,69 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import Spinner from '../Error/Spinner';
+import React, { useState } from 'react';
 
-const News = () => {
-    const [news, setNews] = useState([]);
-    const [loading, setLoading] = useState(false);
+const Newsletter = () => {
+  const [email, setEmail] = useState("");
+  const [click, setClick] = useState(false);
+  const [showClick, setShowClick] = useState(false);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        const getData = async () => {
-            setLoading(true);
-            try {
-                const response = await fetch("https://makaut1.ucanapply.com/smartexam/public/api/notice-data");
-                const data = await response.json();
-                setNews(data.data);
-            } catch (error) {
-                console.error("Error occurred while fetching the news", error);
-            }
-            setLoading(false);
-        };
-        getData();
-    }, []);
-
-    if (loading) {
-        return <Spinner />;
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (!email) {
+      setError("Please enter a valid email address");
+      return;
     }
+    if (!click) {
+      setShowClick(true);
+      return;
+    }
+    console.log("Newsletter email => ", email);
+    setEmail("");
+    setClick(false);
+    setShowClick(false);
+    setError("");
+    alert("Thank you for subscribing!");
+  };
 
-    return (
-        <div className='bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen py-8 relative'>
-            <div className='absolute inset-0 pointer-events-none opacity-25'>
-                <div className="absolute top-10 left-10 w-72 h-72 bg-purple-600 rounded-full filter blur-3xl"></div>
-                <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl"></div>
-                <div className="absolute bottom-10 left-40 w-72 h-72 bg-indigo-500 rounded-full filter blur-3xl"></div>
-            </div>
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-black p-6">
+      <div className="bg-gray-800 text-white rounded-2xl shadow-xl p-6 sm:p-10 w-full max-w-lg">
+        <h1 className="text-2xl sm:text-4xl font-bold text-center">
+          📩 Subscribe to our Newsletter
+        </h1>
+        <p className="text-gray-400 text-center mt-2">
+          Get the latest updates and exclusive content straight to your inbox!
+        </p>
+        
+        <form onSubmit={submitHandler} className="mt-6">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email" className="text-lg">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setError(""); }}
+              placeholder="Enter your email..."
+              className="bg-gray-700 text-white px-4 py-3 rounded-xl outline-none border border-gray-600 focus:border-blue-500 transition-all duration-300"
+            />
+            {error && <p className="text-red-400 text-sm">{error}</p>}
+          </div>
 
-            <div className='w-[96%] md:w-[80%] lg:w-[60%] mx-auto bg-gray-800 bg-opacity-90 border border-gray-700 rounded-2xl shadow-lg backdrop-blur-md p-6 text-white relative z-10'>
-                <h1 className='text-center text-4xl font-bold text-cyan-400'>
-                    Latest Notifications
-                </h1>
-                <hr className='my-4 border-cyan-400' />
+          <div className="flex items-center gap-3 mt-4">
+            <input
+              type="checkbox"
+              id="subscribe"
+              checked={click}
+              onChange={() => setClick(!click)}
+              className="w-5 h-5 accent-blue-500 cursor-pointer"
+            />
+            <label htmlFor="subscribe" className="text-gray-300 cursor-pointer">
+              Yes, subscribe me to the newsletter
+            </label>
+          </div>
+          {showClick && !click && (
+            <p className="text-red-400 text-sm mt-1">Please tick the checkbox</p>
+          )}
 
-                <div className='flex flex-col gap-4 p-2'>
-                    {news.length > 0 ? (
-                        news.map((eachNews) => {
-                            const truncatedTitle = eachNews.notice_title.length > 90
-                                ? eachNews.notice_title.substring(0, 90) + '...'
-                                : eachNews.notice_title;
-
-                            return (
-                                <a
-                                    key={eachNews.id}
-                                    href={eachNews.file_path}
-                                    target='_blank' 
-                                    rel='noopener noreferrer'
-                                    className='flex items-center gap-3 bg-gray-700 bg-opacity-80 hover:bg-cyan-500 transition-all duration-300 p-3 rounded-lg shadow-md text-sm sm:text-lg font-medium text-gray-200 hover:text-white'>
-                                    <span className='px-3 py-1 bg-cyan-400 text-black font-semibold rounded-full text-xs'>{eachNews.notice_date}</span>
-                                    <span className='flex-1'>{truncatedTitle}</span>
-                                </a>
-                            );
-                        })
-                    ) : (
-                        <p className='text-center text-gray-400'>No notifications available.</p>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 transition-all duration-300 text-white font-medium w-full py-3 rounded-full mt-6 shadow-lg hover:shadow-blue-500/50"
+          >
+            Subscribe Now
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
-export default News;
+export default Newsletter;
