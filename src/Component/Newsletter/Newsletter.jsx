@@ -4,11 +4,14 @@ const Newsletter = () => {
   const [email, setEmail] = useState("");
   const [click, setClick] = useState(false);
   const [showClick, setShowClick] = useState(false);
+  const [error, setError] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (!email) {
-      alert("Please enter the email");
+    setError("");
+
+    if (!email.trim()) {
+      setError("Please enter a valid email address.");
       return;
     }
     if (!click) {
@@ -23,15 +26,17 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gradient-to-b from-gray-900 to-black p-4">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-black p-4">
       <div className="bg-gray-800 text-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <h1 className="text-2xl font-semibold text-center">
           Subscribe to our Newsletter
         </h1>
 
-        <form onSubmit={submitHandler} className="mt-4">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm">Email</label>
+        <form onSubmit={submitHandler} className="mt-4 space-y-3">
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1">
+              Email Address
+            </label>
             <input
               type="email"
               id="email"
@@ -39,12 +44,12 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="bg-gray-700 text-white px-3 py-2 rounded-md outline-none border border-gray-600 focus:border-blue-500 transition-all duration-300"
+              className="w-full bg-gray-700 text-white px-3 py-2 rounded-md border border-gray-600 focus:border-blue-500 focus:outline-none"
             />
+            {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
           </div>
-          {!email && <p className="text-red-400 text-sm mt-1">Please enter the email</p>}
 
-          <div className="flex items-center gap-2 mt-3">
+          <div className="flex items-center gap-2">
             <input
               type="checkbox"
               id="subscribe"
@@ -54,11 +59,11 @@ const Newsletter = () => {
             />
             <label htmlFor="subscribe" className="text-sm">Yes, subscribe me</label>
           </div>
-          {showClick && !click && <p className="text-red-400 text-sm mt-1">Please tick the checkbox</p>}
+          {showClick && !click && <p className="text-red-400 text-xs">Please tick the checkbox.</p>}
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium w-full py-2 rounded-md mt-4 transition-all duration-200"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md transition duration-200"
           >
             Subscribe
           </button>
